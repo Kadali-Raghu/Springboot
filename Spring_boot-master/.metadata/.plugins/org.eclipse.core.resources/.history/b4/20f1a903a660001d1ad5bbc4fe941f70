@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+	<div class="container">
+		<table class="table table-bordered table-stripped">
+			<thead>
+				<tr class="bg-primary">
+					<th>Id</th>
+					<th>Name</th>
+					<th>Salarey</th>
+					<th>Location</th>
+				</tr>
+			</thead>
+
+			<tbody class="bg-info">
+				<tr th:each="e:${Emp}">
+					<td th:text="${e.id}"></td>
+					<td th:text="${e.name}"></td>
+					<td th:text="${e.salarey}"></td>
+					<td th:text="${e.location}"></td>
+				</tr>
+			</tbody>
+	
+		</div>
+</body>
+</html>

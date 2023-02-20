@@ -1,0 +1,25 @@
+package com.example.demo.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.demo.service.EmployeeImplimentatiom;
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+
+@Controller
+@RequestMapping("/Employee")
+public class EmployeeController {
+	private EmployeeImplimentatiom a;
+	@Autowired
+	public EmployeeController(EmployeeImplimentatiom a) {
+		this.a=a;
+	}
+@GetMapping("/data")
+	public String data(Model modal) {
+		modal.addAttribute("emp" , a.getEmployee());
+		return "Employee";
+	}
+}

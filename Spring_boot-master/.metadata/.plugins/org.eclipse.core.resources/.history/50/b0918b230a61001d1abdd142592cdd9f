@@ -1,0 +1,70 @@
+package com.example.demo.persistance;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.demo.entity.Farnicher;
+
+public class FernicharDAOImplementations implements FernicharDAOdeclartions {
+	
+	private EntityManager entitymanager;
+    
+	
+	@Autowired
+	public FernicharDAOImplementations(EntityManager entitymanager) {
+	
+		this.entitymanager = entitymanager;
+	}
+	
+	@Override
+	public List<Farnicher> displayAll() {
+		//invoke with session
+		Session session=entitymanager.unwrap(Session.class);
+		//create query
+		Query<Farnicher> query=session.createQuery("from farnicher",Farnicher.class);
+		//execute query
+		 List<Farnicher> farnicher=query.getResultList();
+		//returning the result	
+		return farnicher;
+	}
+
+	@Override
+	public Farnicher getById(int id) {
+		//invoke with session
+		Session session=entitymanager.unwrap(Session.class);
+		//calling method(creation and execution)
+		Farnicher emp=session.get(Farnicher.class,id);
+	    //returning result
+	    return emp;
+	   
+	}
+
+	@Override
+	public void save(Farnicher farnicher) {
+		//invoke with session
+		Session session=entitymanager.unwrap(Session.class);
+		//calling method(creation and execution)
+		session.saveOrUpdate(farnicher);
+	}
+
+	@Override
+	public void deleteById(int id) {
+		//invoke with session
+		Session session=entitymanager.unwrap(Session.class);
+		//create query
+		Query query=session.createQuery("delete from farnicher where id=:farnicherId");
+		//set the parameter
+		query.setParameter("farnicherId",id);
+		//execute query
+		query.executeUpdate();
+	}
+
+
+	
+	
+}

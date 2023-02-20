@@ -1,0 +1,68 @@
+package com.example.demo.controller;
+
+
+
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entity.Farnicher;
+import com.example.demo.service.FarnicherSerImplementations;
+
+@RestController
+@RequestMapping("/Farnicher")
+public class FarnicherController {
+	public FarnicherSerImplementations ems;
+
+	public FarnicherController(FarnicherSerImplementations ems) {
+	
+		this.ems = ems;
+	}
+	
+	@GetMapping("/farnicher") //localhost:8080/display/employees
+	public List<Farnicher> fetchAll()
+	{
+		return ems.showAll();
+	}
+
+	@GetMapping("/farnicher/{farnicherId}") 
+	public Farnicher receiveById(@PathVariable int farnicherId)
+	{
+		Farnicher emp=ems.fetchById(farnicherId);
+		if(emp==null)
+			throw new RuntimeException("Employee not exsisted with this id :"+farnicherId);
+		return emp;	
+	}
+
+	@PostMapping("/farnicher")
+	public void addEmployee(@RequestBody Farnicher farnicher)
+	{
+		farnicher.setId(0);
+		ems.insorup(farnicher);
+	}
+
+	@PutMapping("/employees")
+	public void updateEmployee(@RequestBody Farnicher farnicher)
+	{
+		ems.insorup(farnicher);
+	}
+
+	@DeleteMapping("/employees/{farnicherId}")
+	public String deleteOnId(@PathVariable int farnicherId)
+	{
+		Farnicher emp=ems.fetchById(farnicherId);
+		if(emp==null)
+			throw new RuntimeException("Employee not exsisted to delete:"+farnicherId);
+		ems.delete(farnicherId);
+		return "Deleted Farnicher id is :" +farnicherId;
+	}
+
+}

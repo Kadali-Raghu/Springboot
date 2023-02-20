@@ -1,0 +1,73 @@
+package com.example.demo.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+import com.example.demo.entity.Furniture;
+
+import com.example.demo.persistance.FurnitureJPAInterfaceRepository;
+@Service
+public class FurnitureSerImplementtations implements FurnitureSerdeclarations {
+	private FurnitureJPAInterfaceRepository em;
+    @Autowired
+	public FurnitureSerImplementtations(FurnitureJPAInterfaceRepository em) {
+	
+		this.em = em;
+	}
+	
+    @Override
+    @Transactional
+        public List<Furniture> showAll() {
+    	return em.findAll();
+    }
+
+    @Override
+    @Transactional
+         public Furniture fetchById(int id) {
+    	Furniture mp=em.findById(id).get();
+       return mp;
+    }
+
+    @Override
+    @Transactional
+    public void insorup(Furniture furniture) {
+    	em.save(furniture);
+    }
+
+    @Override
+    @Transactional
+    public void delete(int id) {
+    em.deleteById(id);
+    }
+    
+//    @Override
+//    @Transactional
+//    public void search(int id) {
+//    	em.findById(id);
+//    }
+   
+    @Override
+    @Transactional
+    public  List<Furniture> findAllFurniture(String keyword){
+    if(keyword !=null) {
+    	return em.search(keyword);
+    }
+    return(List<Furniture>) em.findAll();
+    }
+
+    @Override
+	 @Transactional
+	public Furniture findFurnitureByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+    
+	
+
+}

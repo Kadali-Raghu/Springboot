@@ -1,0 +1,19 @@
+package com.example.demo;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.example.demo.car.Car;
+import com.example.demo.car.Vehicle;
+
+@SpringBootApplication
+public class DemoApplication {
+
+	public static void main(String[] args) {
+		//SpringApplication.run(DemoApplication.c, args);
+		Car c=new Car();
+		Vehicle rd=new Vehicle(c);
+		rd.control();
+		
+	}
+
+}

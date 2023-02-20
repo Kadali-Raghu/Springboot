@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Furniture</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<hr>
+<body>
+
+<div class="container">
+	<form th:action="@{/market/save}" th:object="${Furniture}"
+		method="post">
+		<table class="table table-bordered table-stripped">
+		<input type="hidden" th:field=*{id}><br>
+		<br>Name <input type="text" th:field=*{Name}
+			placeholder="enter first Name"><br>
+		<br> Price<input type="text" th:field=*{price}
+			placeholder="enter price "><br>
+		<br>Discount<input type="text" th:field=*{discount}
+			placeholder="enter discount"><br>
+		<br>
+		<button type="submit" class="btn btn-info ">Save</button></table>
+	</form>
+	</div>
+</body>
+</html>

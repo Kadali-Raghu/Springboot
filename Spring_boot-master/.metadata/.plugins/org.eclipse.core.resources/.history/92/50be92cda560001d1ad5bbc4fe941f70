@@ -1,0 +1,27 @@
+package com.example.demo.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.demo.services.HostalDetails;
+
+@Controller
+@RequestMapping("/hostal")
+public class Hostalcontroller {
+	private HostalDetails ho;
+    @Autowired
+	public Hostalcontroller(HostalDetails ho) {
+		super();
+		this.ho = ho;
+	}
+    
+    public String data(Model model) {
+    	model.addAttribute("hostal", ho.getHostal());
+    	return "Hostalwed";
+    }
+	
+	
+
+}

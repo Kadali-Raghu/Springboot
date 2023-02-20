@@ -1,0 +1,13 @@
+package com.example.demo.Controller.Ser;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+@Service
+public class StudentDetails {
+	public List<Student> getStudent(){
+		return List.of(new Student(1,"ganesh","civil"),new Student(1,"ganesh","civil"),new Student(1,"ganesh","civil"),new Student(1,"ganesh","civil"),new Student(1,"ganesh","civil"));
+		
+	}
+
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+ <div class="container">
+ <h1 >Hostal Details</h1>
+		<table class="table table-bordered table-stripped">
+		
+			<thead>
+				<tr class="bg-primary">
+					<th>id</th>
+					<th>name</th>
+					<th>rent</th>
+					<th>location</th>
+				</tr>
+			</thead>
+
+			<tbody class="bg-info">
+				<tr th:each="e:${hostal}">
+					<td th:text="${e.id}"></td>
+					<td th:text="${e.name}"></td>
+					<td th:text="${e.rent}"></td>
+					<td th:text="${e.location}"></td>
+				</tr>
+			</tbody>
+	</table>
+		</div>
+
+</body>
+</html>

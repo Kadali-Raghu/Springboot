@@ -1,0 +1,52 @@
+package com.example.demo.persistance;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
+
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.entity.Furniture;
+@Repository
+public class Furniture_jpa_DAOImplementations implements FurnitureDAOdeclartions{
+	private EntityManager  em;
+	@Autowired
+	public Furniture_jpa_DAOImplementations(EntityManager em) {
+	
+		this.em = em;
+		
+	}
+	@Override
+	public List <Furniture> displayAll(){
+		
+		Query q=(Query) em.createQuery("from Furniture");
+		List<Furniture> Furnitu=q.getResultList();
+		return Furnitu;
+	}
+	@Override
+	public Furniture getById(int id) {
+
+		Furniture frc=em.find(Furniture.class,id);
+		return frc;
+		
+		
+	}
+	@Override
+	public void save(Furniture furniture) {
+		
+		em.merge(furniture);
+	}
+	@Override
+	public void deleteById(int id) {
+		
+		Query query=(Query) em.createQuery("delete from Furniture where id=:id");
+		query.setParameter("id",id);
+		query.executeUpdate();
+		
+	}
+
+
+}

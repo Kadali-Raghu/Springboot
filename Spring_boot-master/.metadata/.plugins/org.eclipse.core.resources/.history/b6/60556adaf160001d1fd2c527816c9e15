@@ -1,0 +1,14 @@
+package com.example.demo.service;
+
+import org.hibernate.mapping.List;
+
+import com.example.demo.entity.Farnicher;
+
+public interface FernicherServdeclaration {
+	
+	public List<Farnicher> showAll(); //select all employees
+	public Farnicher fetchById(int id); //select based on id
+	public void insorup(Farnicher farnicher); //insert update  
+	public void delete(int id); //delete
+
+}

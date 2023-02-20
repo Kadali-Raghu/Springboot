@@ -1,0 +1,22 @@
+package com.example.demo.Controller;
+
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.Controller.Ser.StudentDetails;
+
+@RestController
+public class StudentController {
+	private StudentDetails ac;
+
+	public StudentController(StudentDetails ac) {
+		super();
+		this.ac = ac;
+	}
+	public String data(Model model) {
+		model.addAttribute("stu", ac.getStudent());
+		return "Student";
+	}
+	
+
+}

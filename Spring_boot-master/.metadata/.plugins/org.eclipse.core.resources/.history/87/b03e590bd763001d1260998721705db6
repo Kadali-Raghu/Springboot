@@ -1,0 +1,5 @@
+package com.example.demo.persistance;
+
+public interface Furniture_jpa_DAOdeclartions {
+
+}

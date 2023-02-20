@@ -1,0 +1,13 @@
+package com.example.demo.persistance;
+
+import org.hibernate.mapping.List;
+
+import com.example.demo.entity.Farnicher;
+
+public interface FernicharDAOdeclartions {
+	public List<Farnicher> displayAll(); //select all employees
+	public Farnicher getById(int id); //select based on id--->jpa-get()
+	public void save(Farnicher farnicher); //insert update  -->jpa-saveOrUpdate()
+	public void deleteById(int id);
+
+}
